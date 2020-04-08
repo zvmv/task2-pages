@@ -1,0 +1,17 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='48px' height='48px'>
+	<linearGradient id='fill' x2='0' y2='100%'>
+		<stop offset="0%" stop-color="#BC9CFF"/>
+    <stop offset="100%" stop-color="#8BA4F9"/>
+	</linearGradient>
+	<polygon points='7,15 19,15 19,11 25,5 31,11 31,23 43,23 43,43 7,43 7,5' fill='url(#fill)'/>
+	<rect x='11' y='19' width='4' height='4' fill='white'/>
+	<rect x='11' y='27' width='4' height='4' fill='white'/>
+	<rect x='11' y='35' width='4' height='4' fill='white'/>
+	<rect x='23' y='11' width='4' height='4' fill='white'/>
+	<rect x='23' y='19' width='4' height='4' fill='white'/>
+	<rect x='23' y='27' width='4' height='4' fill='white'/>
+	<rect x='23' y='35' width='4' height='4' fill='white'/>
+	<rect x='35' y='27' width='4' height='4' fill='white'/>
+	<rect x='35' y='35' width='4' height='4' fill='white'/>
+</svg>
+
