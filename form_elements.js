@@ -81,26 +81,11 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 19);
+/******/ 	return __webpack_require__(__webpack_require__.s = 20);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _fonts_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _fonts_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_fonts_css__WEBPACK_IMPORTED_MODULE_0__);
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -221,7 +206,7 @@ class dropdownDatepicker {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(4)))
 
 /***/ }),
-/* 3 */
+/* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -306,6 +291,21 @@ class dropdownCounters {
   }
 
 }
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _fonts_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _fonts_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_fonts_css__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 /* 4 */
@@ -4017,39 +4017,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! jQuery v3.4.
 
 /***/ }),
 /* 5 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return likebtn; });
-class likebtn {
-  constructor(DOMElement, likes) {
-    this.likes = likes || 0;
-    this.likeElement = DOMElement;
-    this.likesElement = DOMElement.getElementsByClassName('likebtn__likes')[0];
-    this.likeHeart = DOMElement.getElementsByClassName('likebtn__heart')[0];
-    this.likeElement.addEventListener('click', e => this.likebtnClick(e));
-    this.likebtnClick = this.likebtnClick.bind(this);
-    this.likesElement.innerText = this.likes;
-
-    if (likes > 0) {
-      this.likebtnLiked();
-    }
-  }
-
-  likebtnLiked() {
-    this.likeElement.classList.add('likebtn_liked');
-    this.likeHeart.innerText = 'favorite';
-  }
-
-  likebtnClick(e) {
-    if (!this.likes) this.likebtnLiked();
-    this.likesElement.innerText = this.likes + 1;
-  }
-
-}
-
-/***/ }),
-/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {;
@@ -6228,13 +6195,13 @@ class likebtn {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(4)))
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports) {
 
 numpadAddClick = e => {
@@ -6273,7 +6240,42 @@ numpadDecClick = e => {
 };
 
 /***/ }),
+/* 8 */,
 /* 9 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return likebtn; });
+class likebtn {
+  constructor(DOMElement, likes) {
+    this.likes = likes || 0;
+    this.likeElement = DOMElement;
+    this.likesElement = DOMElement.getElementsByClassName('likebtn__likes')[0];
+    this.likeHeart = DOMElement.getElementsByClassName('likebtn__heart')[0];
+    this.likeElement.addEventListener('click', e => this.likebtnClick(e));
+    this.likebtnClick = this.likebtnClick.bind(this);
+    this.likesElement.innerText = this.likes;
+
+    if (likes > 0) {
+      this.likebtnLiked();
+    }
+  }
+
+  likebtnLiked() {
+    this.likeElement.classList.add('likebtn_liked');
+    this.likeHeart.innerText = 'favorite';
+  }
+
+  likebtnClick(e) {
+    if (!this.likes) this.likebtnLiked();
+    this.likesElement.innerText = this.likes + 1;
+  }
+
+}
+
+/***/ }),
+/* 10 */,
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6305,7 +6307,7 @@ class ratebtn {
 }
 
 /***/ }),
-/* 10 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6408,7 +6410,7 @@ class pagination {
 }
 
 /***/ }),
-/* 11 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6460,12 +6462,12 @@ class rangeslider {
 }
 
 /***/ }),
-/* 12 */
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return comment; });
-/* harmony import */ var _likebtn_likebtn_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
+/* harmony import */ var _likebtn_likebtn_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9);
 
 class comment {
   constructor(DOMElement, name, photo, date, likes, content) {
@@ -6483,37 +6485,36 @@ class comment {
 }
 
 /***/ }),
-/* 13 */,
-/* 14 */,
 /* 15 */,
 /* 16 */,
 /* 17 */,
 /* 18 */,
-/* 19 */
+/* 19 */,
+/* 20 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var _shared_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
-/* harmony import */ var _plugins_air_datepicker_css_datepicker_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var _shared_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _plugins_air_datepicker_css_datepicker_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
 /* harmony import */ var _plugins_air_datepicker_css_datepicker_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_plugins_air_datepicker_css_datepicker_css__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _form_elements_sass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(20);
+/* harmony import */ var _form_elements_sass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(21);
 /* harmony import */ var _form_elements_sass__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_form_elements_sass__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _blocks_numpad_numpad_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8);
+/* harmony import */ var _blocks_numpad_numpad_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(7);
 /* harmony import */ var _blocks_numpad_numpad_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_blocks_numpad_numpad_js__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _blocks_dropdown_dropdown_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(21);
+/* harmony import */ var _blocks_dropdown_dropdown_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(22);
 /* harmony import */ var _blocks_dropdown_dropdown_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_blocks_dropdown_dropdown_js__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _blocks_checkbox_list_checkbox_list_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(22);
+/* harmony import */ var _blocks_checkbox_list_checkbox_list_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(23);
 /* harmony import */ var _blocks_checkbox_list_checkbox_list_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_blocks_checkbox_list_checkbox_list_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(6);
+/* harmony import */ var _plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(5);
 /* harmony import */ var _plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _blocks_ratebtn_ratebtn_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(9);
-/* harmony import */ var _blocks_likebtn_likebtn_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(5);
-/* harmony import */ var _blocks_pagination_pagination_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(10);
-/* harmony import */ var _blocks_range_slider_range_slider_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(11);
-/* harmony import */ var _blocks_dropdown_dropdownCounters_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(3);
-/* harmony import */ var _blocks_dropdown_dropdownDatepicker_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(2);
-/* harmony import */ var _blocks_comment_comment_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(12);
+/* harmony import */ var _blocks_ratebtn_ratebtn_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(11);
+/* harmony import */ var _blocks_likebtn_likebtn_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(9);
+/* harmony import */ var _blocks_pagination_pagination_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(12);
+/* harmony import */ var _blocks_range_slider_range_slider_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(13);
+/* harmony import */ var _blocks_dropdown_dropdownCounters_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(1);
+/* harmony import */ var _blocks_dropdown_dropdownDatepicker_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(0);
+/* harmony import */ var _blocks_comment_comment_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(14);
 
 
 
@@ -6546,19 +6547,19 @@ let comment1 = new _blocks_comment_comment_js__WEBPACK_IMPORTED_MODULE_13__[/* d
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(4)))
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports) {
 
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports) {
 
 checkboxlistOnClick = e => {

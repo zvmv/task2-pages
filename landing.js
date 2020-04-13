@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 24);
+/******/ 	return __webpack_require__(__webpack_require__.s = 29);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -15675,63 +15675,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 /* 12 */,
 /* 13 */,
 /* 14 */,
-/* 15 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateAccount; });
-/* harmony import */ var _dropdown_dropdownDatepicker_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
-
-/*
- *	CreateAccount(DOMElement, options)
- *	options = {
- *		callback: function (result)
- *		loginCallback: function (result)
- *	}
- *
- *
-		this.result={
-			firstname: '',
-			lastname: '',
-			sex: '',
-			bornDate: '',
-			login: '',
-			password: '',
-			getOffers: false
-		};
-*/
-
-class CreateAccount {
-  constructor(DOMElement, options) {
-    if (!DOMElement) return; //create and searching elements
-
-    this._options = options;
-    this._DOMElement = DOMElement;
-    this._dp = new _dropdown_dropdownDatepicker_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"]('borndate_input');
-    this._submitBtn = DOMElement.getElementsByClassName('button-submit')[0];
-    this._loginBtn = DOMElement.getElementsByClassName('button')[0]; //init
-
-    this.result = {};
-
-    this._submitBtn.addEventListener('click', () => this._submitClick());
-
-    if (this._options) if (this._options.callbackLogin) this._loginBtn.addEventListener('click', () => this._options.callbackLogin(this.result));
-  }
-
-  _submitClick(e) {
-    this.result = {};
-    let formData = new FormData(this._DOMElement);
-    if (this._dp.dates[0]) formData.set('bornDate', this._dp.dates[0]);
-
-    for (let i of formData.keys()) this.result[i] = formData.get(i);
-
-    if (this._options) if (this._options.callback) this._options.callback(this.result);
-  }
-
-}
-;
-
-/***/ }),
+/* 15 */,
 /* 16 */,
 /* 17 */,
 /* 18 */,
@@ -15740,24 +15684,22 @@ class CreateAccount {
 /* 21 */,
 /* 22 */,
 /* 23 */,
-/* 24 */
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */,
+/* 29 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var _shared_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _shared_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _plugins_air_datepicker_css_datepicker_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
 /* harmony import */ var _plugins_air_datepicker_css_datepicker_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_plugins_air_datepicker_css_datepicker_css__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _cards_sass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(25);
-/* harmony import */ var _cards_sass__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_cards_sass__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _landing_sass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(30);
+/* harmony import */ var _landing_sass__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_landing_sass__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _blocks_room_search_room_search_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8);
-/* harmony import */ var _blocks_create_account_create_account_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(15);
-/* harmony import */ var _blocks_booking_booking_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(26);
-/* harmony import */ var _plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(5);
-/* harmony import */ var _plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_6__);
-
-
-
 
 
 
@@ -15766,43 +15708,12 @@ let rs1 = new _blocks_room_search_room_search_js__WEBPACK_IMPORTED_MODULE_3__[/*
   dropdowns: ['dp1', 'dp2', 'dd_guests'],
   callback: console.log
 });
-let ca1 = new _blocks_create_account_create_account_js__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"](document.getElementsByClassName('create-account')[0], {
-  callback: console.log,
-  callbackLogin: () => alert('login form call')
-});
-let dpOptions = {
-  navTitles: {
-    days: 'MM yyyy',
-    months: 'yyyy',
-    years: 'yyyy1 - yyyy2'
-  },
-  prevHtml: 'arrow_back',
-  nextHtml: 'arrow_forward',
-  multipleDatesSeparator: ' - ',
-  range: true
-};
-$('.fordatepicker').datepicker(dpOptions);
-let dp = $('.fordatepicker').data('datepicker');
-dp.date = new Date('2019-08-08');
-dp.selectDate([new Date('2019-08-19'), new Date('2019-08-23')]);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(4)))
 
 /***/ }),
-/* 25 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 26 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export default */
-class Booking {
-  constructor(DOMElement, options) {}
-
-}
 
 /***/ })
 /******/ ]);
