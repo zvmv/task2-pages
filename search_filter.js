@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 22);
+/******/ 	return __webpack_require__(__webpack_require__.s = 32);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -6415,39 +6415,7 @@ class rangeslider {
 
 /***/ }),
 /* 11 */,
-/* 12 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return likebtn; });
-class likebtn {
-  constructor(DOMElement, likes) {
-    this.likes = likes || 0;
-    this.likeElement = DOMElement;
-    this.likesElement = DOMElement.getElementsByClassName('likebtn__likes')[0];
-    this.likeHeart = DOMElement.getElementsByClassName('likebtn__heart')[0];
-    this.likeElement.addEventListener('click', e => this.likebtnClick(e));
-    this.likebtnClick = this.likebtnClick.bind(this);
-    this.likesElement.innerText = this.likes;
-
-    if (likes > 0) {
-      this.likebtnLiked();
-    }
-  }
-
-  likebtnLiked() {
-    this.likeElement.classList.add('likebtn_liked');
-    this.likeHeart.innerText = 'favorite';
-  }
-
-  likebtnClick(e) {
-    if (!this.likes) this.likebtnLiked();
-    this.likesElement.innerText = this.likes + 1;
-  }
-
-}
-
-/***/ }),
+/* 12 */,
 /* 13 */
 /***/ (function(module, exports) {
 
@@ -6460,91 +6428,37 @@ checkboxlistOnClick = e => {
 
 /***/ }),
 /* 14 */,
-/* 15 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ratebtn; });
-class ratebtn {
-  constructor(DOMElement, rate, enabled) {
-    this.ratebtn = DOMElement;
-    this.ratebtnStars = DOMElement.getElementsByClassName('ratebtn__star');
-    this.rate = rate || 0;
-    this.updateRate();
-    if (enabled) for (let i = 0; i < this.ratebtnStars.length; i++) {
-      this.ratebtnStars[i].addEventListener('click', e => this.starClick(e));
-      this.ratebtnStars[i].classList.add('ratebtn__star_pointer');
-    }
-  }
-
-  updateRate() {
-    if (this.rate <= 5) for (let i = 0; i < this.rate; i++) this.ratebtnStars[i].innerText = 'star';
-
-    for (let i = this.rate; i < 5; i++) this.ratebtnStars[i].innerText = 'star_border';
-  }
-
-  starClick(e) {
-    let newRate = +e.currentTarget.attributes.value.value;
-    if (this.rate === 1 && newRate === 1) this.rate = 0;else this.rate = newRate;
-    this.updateRate();
-  }
-
-}
-
-/***/ }),
-/* 16 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return comment; });
-/* harmony import */ var _likebtn_likebtn_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(12);
-
-class comment {
-  constructor(DOMElement, name, photo, date, likes, content) {
-    this.content = DOMElement.getElementsByClassName('comment__content')[0];
-    this.name = DOMElement.getElementsByClassName('comment__authorname')[0];
-    this.date = DOMElement.getElementsByClassName('comment__date')[0];
-    this.likebtn = new _likebtn_likebtn_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"](DOMElement.getElementsByClassName('likebtn')[0], likes || 0);
-    this.photo = DOMElement.getElementsByClassName('comment__photo')[0];
-    this.name.innerText = name;
-    this.date = date.toLocaleString() || '';
-    this.photo.src = photo;
-    this.content.innerText = content;
-  }
-
-}
-
-/***/ }),
+/* 15 */,
+/* 16 */,
 /* 17 */,
 /* 18 */,
 /* 19 */,
 /* 20 */,
 /* 21 */,
-/* 22 */
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */,
+/* 29 */,
+/* 30 */,
+/* 31 */,
+/* 32 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var _shared_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
-/* harmony import */ var _plugins_air_datepicker_css_datepicker_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
-/* harmony import */ var _plugins_air_datepicker_css_datepicker_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_plugins_air_datepicker_css_datepicker_css__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _form_elements_sass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(23);
-/* harmony import */ var _form_elements_sass__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_form_elements_sass__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _blocks_numpad_numpad_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8);
-/* harmony import */ var _blocks_numpad_numpad_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_blocks_numpad_numpad_js__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _blocks_dropdown_dropdown_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(24);
-/* harmony import */ var _blocks_dropdown_dropdown_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_blocks_dropdown_dropdown_js__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _blocks_checkbox_list_checkbox_list_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(13);
-/* harmony import */ var _blocks_checkbox_list_checkbox_list_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_blocks_checkbox_list_checkbox_list_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(5);
-/* harmony import */ var _plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _blocks_ratebtn_ratebtn_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(15);
-/* harmony import */ var _blocks_likebtn_likebtn_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(12);
-/* harmony import */ var _blocks_pagination_pagination_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(9);
-/* harmony import */ var _blocks_range_slider_range_slider_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(10);
-/* harmony import */ var _blocks_dropdown_dropdownCounters_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(0);
-/* harmony import */ var _blocks_dropdown_dropdownDatepicker_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(1);
-/* harmony import */ var _blocks_comment_comment_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(16);
+/* harmony import */ var _shared_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _blocks_dropdown_dropdownDatepicker_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1);
+/* harmony import */ var _blocks_dropdown_dropdownCounters_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(0);
+/* harmony import */ var _search_filter_sass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(33);
+/* harmony import */ var _search_filter_sass__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_search_filter_sass__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _blocks_range_slider_range_slider_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(10);
+/* harmony import */ var _blocks_checkbox_list_checkbox_list__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(13);
+/* harmony import */ var _blocks_checkbox_list_checkbox_list__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_blocks_checkbox_list_checkbox_list__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _blocks_pagination_pagination_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(9);
 
 
 
@@ -6552,41 +6466,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
-
-
-
-let ratebtn1 = new _blocks_ratebtn_ratebtn_js__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"](document.getElementsByClassName('ratebtn')[0], 4, 1);
-let ratebtn2 = new _blocks_ratebtn_ratebtn_js__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"](document.getElementsByClassName('ratebtn')[1], 5);
-let like1 = new _blocks_likebtn_likebtn_js__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"](document.getElementsByClassName('likebtn')[0]);
-let like2 = new _blocks_likebtn_likebtn_js__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"](document.getElementsByClassName('likebtn')[1], 10);
-let pag1 = new _blocks_pagination_pagination_js__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"](document.getElementsByClassName('pagination')[0], 104, 10);
-let slider1 = new _blocks_range_slider_range_slider_js__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"](document.getElementsByClassName('range-slider')[0], 0, 15500, 500);
-let dropdown1 = new _blocks_dropdown_dropdownCounters_js__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"](document.getElementsByClassName('dropdown')[0]);
-let dropdown2 = new _blocks_dropdown_dropdownCounters_js__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"](document.getElementsByClassName('dropdown')[4]);
-let dropdown3 = new _blocks_dropdown_dropdownCounters_js__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"](document.getElementsByClassName('dropdown')[5]);
-let dropdown4 = new _blocks_dropdown_dropdownCounters_js__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"](document.getElementsByClassName('dropdown')[6]);
-let dropdown5 = new _blocks_dropdown_dropdownCounters_js__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"](document.getElementsByClassName('dropdown')[7]);
-let dddpicker1 = new _blocks_dropdown_dropdownDatepicker_js__WEBPACK_IMPORTED_MODULE_12__[/* default */ "a"]('dp1', false);
-let dddpicker2 = new _blocks_dropdown_dropdownDatepicker_js__WEBPACK_IMPORTED_MODULE_12__[/* default */ "a"]('dp2', false);
-let dddpicker3 = new _blocks_dropdown_dropdownDatepicker_js__WEBPACK_IMPORTED_MODULE_12__[/* default */ "a"]('dp3', true);
-let comment1 = new _blocks_comment_comment_js__WEBPACK_IMPORTED_MODULE_13__[/* default */ "a"]($('.comment')[0], 'Мурад Сарафанов', 'static/murat.png', new Date(), 12, 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.');
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(4)))
+let dddpicker = new _blocks_dropdown_dropdownDatepicker_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"]('dp', true);
+let ddcounter1 = new _blocks_dropdown_dropdownCounters_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"](document.getElementById('ddc1'));
+let ddcounter2 = new _blocks_dropdown_dropdownCounters_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"](document.getElementById('ddc2'));
+let slider = new _blocks_range_slider_range_slider_js__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"](document.getElementById('range'), 0, 15000, 500);
+let pag = new _blocks_pagination_pagination_js__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"](document.getElementById('pags'), 104, 10);
 
 /***/ }),
-/* 23 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 24 */
-/***/ (function(module, exports) {
-
-
 
 /***/ })
 /******/ ]);
