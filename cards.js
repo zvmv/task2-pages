@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 25);
+/******/ 	return __webpack_require__(__webpack_require__.s = 27);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -191,134 +191,6 @@ class dropdownCounters {
 
 /***/ }),
 /* 3 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return dropdownDatepicker; });
-/* harmony import */ var _plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
-/* harmony import */ var _plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _plugins_air_datepicker_css_datepicker_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
-/* harmony import */ var _plugins_air_datepicker_css_datepicker_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_plugins_air_datepicker_css_datepicker_css__WEBPACK_IMPORTED_MODULE_1__);
-
-
-/*dates - selected dates
-  fdate - formatted date
- dropdownDatepicker(DOMElementsId, range)
- DOMElementsId: id or Array[2] of domelements id's
- if DOMElementsId has 2 members or range=true,
- 	datepicker will select range
- *
-*/
-
-class dropdownDatepicker {
-  constructor(DOMElementsId, range) {
-    this.dates = [];
-
-    if (Array.isArray(DOMElementsId)) {
-      this.id1 = DOMElementsId[0];
-      this.id2 = DOMElementsId[1];
-    } else if (DOMElementsId) this.id1 = DOMElementsId;
-
-    let DOMElement = document.getElementById(this.id1);
-    this.fieldElement = DOMElement.getElementsByClassName('dropdown__field')[0];
-    this.frame = DOMElement.getElementsByClassName('dropdown__frame')[0];
-    this.dropdown = DOMElement.getElementsByClassName('dropdown__dropdown')[0];
-    this.applybtn = DOMElement.getElementsByClassName('dropdown__applybtn')[0];
-    this.clearbtn = DOMElement.getElementsByClassName('dropdown__clearbtn')[0];
-    this.clearbtn.addEventListener('click', e => this.clearbtnClick(e));
-    this.applybtn.addEventListener('click', e => this.applybtnClick(e));
-    this.frame.addEventListener('click', event => this.btndownClick(event));
-
-    if (this.id2) {
-      this.dropdown2 = document.getElementById(this.id2);
-      this.frame2 = this.dropdown2.getElementsByClassName('dropdown__frame')[0];
-      this.frame2.addEventListener('click', event => this.btndownClick(event));
-      this.fieldElement2 = this.dropdown2.getElementsByClassName('dropdown__field')[0];
-    }
-
-    this.fieldElement.readOnly = true;
-    this.dpOptions = {};
-    this.dpOptions.navTitles = {
-      days: 'MM yyyy',
-      months: 'yyyy',
-      years: 'yyyy1 - yyyy2'
-    };
-    this.dpOptions.prevHtml = 'arrow_back';
-    this.dpOptions.nextHtml = 'arrow_forward';
-    this.dpOptions.multipleDatesSeparator = ' - ';
-
-    if (range === true || this.id2) {
-      this.dpOptions.range = true;
-      this.dpOptions.dateFormat = 'd M';
-    }
-
-    ;
-
-    this.dpOptions.onSelect = (fdate, date, inst) => {
-      this.dates = inst.selectedDates;
-      /*if (this.id2){
-      	if (inst.selectedDates[0]){
-      		let dat=inst.selectedDates[0];
-      		this.fieldElement.value=
-      			(dat.getDate()<10?'0'+dat.getDate():dat.getDate())+'.'
-      			+(dat.getMonth()<9?'0'+(dat.getMonth()+1):+(dat.getMonth()+1))+'.'
-      			+dat.getFullYear();
-      	}; 
-      	if (inst.selectedDates[1]){
-      		let dat=inst.selectedDates[1];
-      		this.fieldElement2.value=
-      			(dat.getDate()<10?'0'+dat.getDate():dat.getDate())+'.'
-      			+(dat.getMonth()<9?'0'+(dat.getMonth()+1):+(dat.getMonth()+1))+'.'
-      			+dat.getFullYear();
-      	};
-      }
-      else
-      	this.fieldElement.value=fdate;*/
-
-      this.fdate = fdate;
-      if (inst.selectedDates.length > 0) this.clearbtn.classList.add('dropdown__clearbtn_visible');else this.clearbtn.classList.remove('dropdown__clearbtn_visible');
-    };
-
-    $(`#${this.id1} .dropdown__child`).datepicker(this.dpOptions);
-    this.dp = $(`#${this.id1} .dropdown__child`).data('datepicker');
-  }
-
-  clearbtnClick(e) {
-    this.date = '';
-    this.fieldElement.value = '';
-    if (this.id2) this.fieldElement2.value = '';
-    this.clearbtn.classList.remove('dropdown__clearbtn_visible');
-    this.dp.clear();
-  }
-
-  btndownClick(e) {
-    this.dropdown.classList.toggle('dropdown__dropdown_visible');
-    this.frame.classList.toggle('dropdown__frame_hover');
-    this.frame.classList.toggle('dropdown__frame_dropdown');
-    this.frame.classList.remove('dropdown__frame_red');
-  }
-
-  applybtnClick(e) {
-    if (this.id2) {
-      if (this.dp.selectedDates[0]) {
-        let dat = this.dp.selectedDates[0];
-        this.fieldElement.value = (dat.getDate() < 10 ? '0' + dat.getDate() : dat.getDate()) + '.' + (dat.getMonth() < 9 ? '0' + (dat.getMonth() + 1) : +(dat.getMonth() + 1)) + '.' + dat.getFullYear();
-      } else this.fieldElement.value = '';
-
-      if (this.dp.selectedDates[1]) {
-        let dat = this.dp.selectedDates[1];
-        this.fieldElement2.value = (dat.getDate() < 10 ? '0' + dat.getDate() : dat.getDate()) + '.' + (dat.getMonth() < 9 ? '0' + (dat.getMonth() + 1) : +(dat.getMonth() + 1)) + '.' + dat.getFullYear();
-      } else this.fieldElement2.value = '';
-    } else this.fieldElement.value = this.fdate;
-
-    this.btndownClick();
-  }
-
-}
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(4)))
-
-/***/ }),
-/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! jQuery v3.4.1 | (c) JS Foundation and other contributors | jquery.org/license */
@@ -4026,6 +3898,134 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! jQuery v3.4.
 });
 
 /***/ }),
+/* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return dropdownDatepicker; });
+/* harmony import */ var _plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
+/* harmony import */ var _plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _plugins_air_datepicker_css_datepicker_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
+/* harmony import */ var _plugins_air_datepicker_css_datepicker_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_plugins_air_datepicker_css_datepicker_css__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/*dates - selected dates
+  fdate - formatted date
+ dropdownDatepicker(DOMElementsId, range)
+ DOMElementsId: id or Array[2] of domelements id's
+ if DOMElementsId has 2 members or range=true,
+ 	datepicker will select range
+ *
+*/
+
+class dropdownDatepicker {
+  constructor(DOMElementsId, range) {
+    this.dates = [];
+
+    if (Array.isArray(DOMElementsId)) {
+      this.id1 = DOMElementsId[0];
+      this.id2 = DOMElementsId[1];
+    } else if (DOMElementsId) this.id1 = DOMElementsId;
+
+    let DOMElement = document.getElementById(this.id1);
+    this.fieldElement = DOMElement.getElementsByClassName('dropdown__field')[0];
+    this.frame = DOMElement.getElementsByClassName('dropdown__frame')[0];
+    this.dropdown = DOMElement.getElementsByClassName('dropdown__dropdown')[0];
+    this.applybtn = DOMElement.getElementsByClassName('dropdown__applybtn')[0];
+    this.clearbtn = DOMElement.getElementsByClassName('dropdown__clearbtn')[0];
+    this.clearbtn.addEventListener('click', e => this.clearbtnClick(e));
+    this.applybtn.addEventListener('click', e => this.applybtnClick(e));
+    this.frame.addEventListener('click', event => this.btndownClick(event));
+
+    if (this.id2) {
+      this.dropdown2 = document.getElementById(this.id2);
+      this.frame2 = this.dropdown2.getElementsByClassName('dropdown__frame')[0];
+      this.frame2.addEventListener('click', event => this.btndownClick(event));
+      this.fieldElement2 = this.dropdown2.getElementsByClassName('dropdown__field')[0];
+    }
+
+    this.fieldElement.readOnly = true;
+    this.dpOptions = {};
+    this.dpOptions.navTitles = {
+      days: 'MM yyyy',
+      months: 'yyyy',
+      years: 'yyyy1 - yyyy2'
+    };
+    this.dpOptions.prevHtml = 'arrow_back';
+    this.dpOptions.nextHtml = 'arrow_forward';
+    this.dpOptions.multipleDatesSeparator = ' - ';
+
+    if (range === true || this.id2) {
+      this.dpOptions.range = true;
+      this.dpOptions.dateFormat = 'd M';
+    }
+
+    ;
+
+    this.dpOptions.onSelect = (fdate, date, inst) => {
+      this.dates = inst.selectedDates;
+      /*if (this.id2){
+      	if (inst.selectedDates[0]){
+      		let dat=inst.selectedDates[0];
+      		this.fieldElement.value=
+      			(dat.getDate()<10?'0'+dat.getDate():dat.getDate())+'.'
+      			+(dat.getMonth()<9?'0'+(dat.getMonth()+1):+(dat.getMonth()+1))+'.'
+      			+dat.getFullYear();
+      	}; 
+      	if (inst.selectedDates[1]){
+      		let dat=inst.selectedDates[1];
+      		this.fieldElement2.value=
+      			(dat.getDate()<10?'0'+dat.getDate():dat.getDate())+'.'
+      			+(dat.getMonth()<9?'0'+(dat.getMonth()+1):+(dat.getMonth()+1))+'.'
+      			+dat.getFullYear();
+      	};
+      }
+      else
+      	this.fieldElement.value=fdate;*/
+
+      this.fdate = fdate;
+      if (inst.selectedDates.length > 0) this.clearbtn.classList.add('dropdown__clearbtn_visible');else this.clearbtn.classList.remove('dropdown__clearbtn_visible');
+    };
+
+    $(`#${this.id1} .dropdown__child`).datepicker(this.dpOptions);
+    this.dp = $(`#${this.id1} .dropdown__child`).data('datepicker');
+  }
+
+  clearbtnClick(e) {
+    this.date = '';
+    this.fieldElement.value = '';
+    if (this.id2) this.fieldElement2.value = '';
+    this.clearbtn.classList.remove('dropdown__clearbtn_visible');
+    this.dp.clear();
+  }
+
+  btndownClick(e) {
+    this.dropdown.classList.toggle('dropdown__dropdown_visible');
+    this.frame.classList.toggle('dropdown__frame_hover');
+    this.frame.classList.toggle('dropdown__frame_dropdown');
+    this.frame.classList.remove('dropdown__frame_red');
+  }
+
+  applybtnClick(e) {
+    if (this.id2) {
+      if (this.dp.selectedDates[0]) {
+        let dat = this.dp.selectedDates[0];
+        this.fieldElement.value = (dat.getDate() < 10 ? '0' + dat.getDate() : dat.getDate()) + '.' + (dat.getMonth() < 9 ? '0' + (dat.getMonth() + 1) : +(dat.getMonth() + 1)) + '.' + dat.getFullYear();
+      } else this.fieldElement.value = '';
+
+      if (this.dp.selectedDates[1]) {
+        let dat = this.dp.selectedDates[1];
+        this.fieldElement2.value = (dat.getDate() < 10 ? '0' + dat.getDate() : dat.getDate()) + '.' + (dat.getMonth() < 9 ? '0' + (dat.getMonth() + 1) : +(dat.getMonth() + 1)) + '.' + dat.getFullYear();
+      } else this.fieldElement2.value = '';
+    } else this.fieldElement.value = this.fdate;
+
+    this.btndownClick();
+  }
+
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(3)))
+
+/***/ }),
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6202,7 +6202,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! jQuery v3.4.
     };
   })();
 })(window, jQuery);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(3)))
 
 /***/ }),
 /* 6 */
@@ -6261,16 +6261,18 @@ numpadDecClick = e => {
 /***/ }),
 /* 9 */,
 /* 10 */,
-/* 11 */
+/* 11 */,
+/* 12 */,
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RoomSearch; });
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(14);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(15);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5);
 /* harmony import */ var _plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _dropdown_dropdownDatepicker_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
+/* harmony import */ var _dropdown_dropdownDatepicker_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4);
 /* harmony import */ var _dropdown_dropdownCounters_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(0);
 /* harmony import */ var _num_select_num_select_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(7);
 
@@ -6359,9 +6361,8 @@ class RoomSearch {
 }
 
 /***/ }),
-/* 12 */,
-/* 13 */,
-/* 14 */
+/* 14 */,
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -15679,14 +15680,24 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 });
 
 /***/ }),
-/* 15 */,
-/* 16 */,
-/* 17 */
+/* 16 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export default */
+class Booking {
+  constructor(DOMElement, options) {}
+
+}
+
+/***/ }),
+/* 17 */,
+/* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateAccount; });
-/* harmony import */ var _dropdown_dropdownDatepicker_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _dropdown_dropdownDatepicker_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
 
 /*
  *	CreateAccount(DOMElement, options)
@@ -15738,14 +15749,15 @@ class CreateAccount {
 ;
 
 /***/ }),
-/* 18 */,
 /* 19 */,
 /* 20 */,
 /* 21 */,
 /* 22 */,
 /* 23 */,
 /* 24 */,
-/* 25 */
+/* 25 */,
+/* 26 */,
+/* 27 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15753,11 +15765,11 @@ __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var _shared_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _plugins_air_datepicker_css_datepicker_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
 /* harmony import */ var _plugins_air_datepicker_css_datepicker_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_plugins_air_datepicker_css_datepicker_css__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _cards_sass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(26);
+/* harmony import */ var _cards_sass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(28);
 /* harmony import */ var _cards_sass__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_cards_sass__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _blocks_room_search_room_search_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(11);
-/* harmony import */ var _blocks_create_account_create_account_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(17);
-/* harmony import */ var _blocks_booking_booking_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(27);
+/* harmony import */ var _blocks_room_search_room_search_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(13);
+/* harmony import */ var _blocks_create_account_create_account_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(18);
+/* harmony import */ var _blocks_booking_booking_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(16);
 /* harmony import */ var _plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(5);
 /* harmony import */ var _plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_6__);
 
@@ -15790,24 +15802,13 @@ $('.fordatepicker').datepicker(dpOptions);
 let dp = $('.fordatepicker').data('datepicker');
 dp.date = new Date('2019-08-08');
 dp.selectDate([new Date('2019-08-19'), new Date('2019-08-23')]);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(3)))
 
 /***/ }),
-/* 26 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 27 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export default */
-class Booking {
-  constructor(DOMElement, options) {}
-
-}
 
 /***/ })
 /******/ ]);
