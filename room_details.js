@@ -81,142 +81,12 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 35);
+/******/ 	return __webpack_require__(__webpack_require__.s = 36);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 1:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _fonts_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
-/* harmony import */ var _fonts_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_fonts_css__WEBPACK_IMPORTED_MODULE_0__);
-
-
-/***/ }),
-
-/***/ 10:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return comment; });
-/* harmony import */ var _likebtn_likebtn_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9);
-
-class comment {
-  constructor(DOMElement, name, photo, date, likes, content) {
-    this.content = DOMElement.getElementsByClassName('comment__content')[0];
-    this.name = DOMElement.getElementsByClassName('comment__authorname')[0];
-    this.date = DOMElement.getElementsByClassName('comment__date')[0];
-    this.likebtn = new _likebtn_likebtn_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"](DOMElement.getElementsByClassName('likebtn')[0], likes || 0);
-    this.photo = DOMElement.getElementsByClassName('comment__photo')[0];
-    this.name.innerText = name; //this.date.innerText=date.toLocaleString() || '';
-
-    this.photo.src = photo;
-    this.content.innerText = content;
-  }
-
-}
-
-/***/ }),
-
-/***/ 16:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export default */
-class Booking {
-  constructor(DOMElement, options) {}
-
-}
-
-/***/ }),
-
-/***/ 19:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return impressions; });
-class impressions {
-  constructor(DOMElement, options) {
-    this.radius = 61;
-    this.el = DOMElement;
-    this.votes = options.excellent + options.good + options.satisfied + options.disappoint;
-    let length = 2 * 3.1415926 * (this.radius - 4);
-    this.excellent = {};
-    this.good = {};
-    this.satisfied = {};
-    this.disappoint = {};
-    this.excellent.before = 0;
-    this.excellent.arc = length * options.excellent / this.votes;
-    this.excellent.space = length - this.excellent.arc;
-    this.good.before = this.excellent.arc;
-    this.good.arc = length * options.good / this.votes;
-    this.good.space = length - this.good.arc - this.good.before;
-    this.satisfied.before = this.good.before + this.good.arc;
-    this.satisfied.arc = length * options.satisfied / this.votes;
-    this.satisfied.space = length - this.satisfied.arc - this.satisfied.before;
-    this.disappoint.before = this.satisfied.before + this.satisfied.arc;
-    this.disappoint.arc = length * options.disappoint / this.votes;
-    this.disappoint.space = 0;
-    this.render = this.render.bind(this);
-    this.render();
-  }
-
-  render() {
-    this.newel = this.el.appendChild(document.createElement('div'));
-    this.newel.classList.add('impressions');
-    this.newel.innerHTML = ` 
-			<svg width='120' height='120' viewBox='0 0 120 120'> 
-				<linearGradient id='purple-grad' x2='0' y2='100%'>
-					<stop offset="0%" stop-color="#BC9CFF"/>
-			    <stop offset="100%" stop-color="#8BA4F9"/>
-				</linearGradient>
-				<linearGradient id='green-grad' x2='0' y2='100%'>
-					<stop offset="0%" stop-color="#6FCF97"/>
-			    <stop offset="100%" stop-color="#66D2EA"/>
-				</linearGradient>
-				<linearGradient id='yellow-grad' x2='0' y2='100%'>
-					<stop offset="0%" stop-color="#FFE39C"/>
-			    <stop offset="100%" stop-color="#FFBA9C"/>
-				</linearGradient>
-				<linearGradient id='black-grad' x2='0' y2='100%'>
-					<stop offset="0%" stop-color="#919191"/>
-			    <stop offset="100%" stop-color="#3D4975"/>
-				</linearGradient>
-				<circle cx='${this.radius}' cy='${this.radius}' r='${this.radius - 4}' fill='none' stroke='url(#yellow-grad)' stroke-width='3.5px' 
-					stroke-dasharray='${this.excellent.arc - 2} ${this.excellent.space}'/> 
-				<circle cx='${this.radius}' cy='${this.radius}' r='${this.radius - 4}' fill='none' stroke='url(#green-grad)' stroke-width='3.5px' 
-					stroke-dasharray='0 ${this.good.before} ${this.good.arc - 2} ${this.good.space}'/> 
-				<circle cx='${this.radius}' cy='${this.radius}' r='${this.radius - 4}' fill='none' stroke='url(#purple-grad)' stroke-width='3.5px' \ 
-					stroke-dasharray='0 ${this.satisfied.before} ${this.satisfied.arc - 2} ${this.satisfied.space}'/> 
-				<circle cx='${this.radius}' cy='${this.radius}' r='${this.radius - 4}' fill='none' stroke='url(#black-grad)' stroke-width='3.5px' 
-					stroke-dasharray='0 ${this.disappoint.before} ${this.disappoint.arc - 4} ${this.disappoint.space}'/> 
-			</svg>
-			<div class='impressions__votes'>
-				<p>${this.votes}</p>
-				<p>голосов</p>
-			</div>
-			<div class='impressions__legend'>
-				<span class='impressions__legend-icon yellow-gradient'></span>Великолепно<br>
-				<span class='impressions__legend-icon green-gradient'></span>Хорошо<br>
-				<span class='impressions__legend-icon purple-gradient'></span>Удовлетворительно<br>
-				<span class='impressions__legend-icon black-gradient'></span>Разочарован
-			</div>`;
-  }
-
-}
-
-/***/ }),
-
-/***/ 2:
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ 3:
+/***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! jQuery v3.4.1 | (c) JS Foundation and other contributors | jquery.org/license */
@@ -3925,42 +3795,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! jQuery v3.4.
 
 /***/ }),
 
-/***/ 35:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var _shared_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _room_details_sass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(36);
-/* harmony import */ var _room_details_sass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_room_details_sass__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _blocks_comment_comment_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(10);
-/* harmony import */ var _blocks_booking_booking_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(16);
-/* harmony import */ var _blocks_impressions_impressions_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(19);
-
-
-
-
-
-let comment1 = new _blocks_comment_comment_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"]($('.comment')[0], 'Мурад Сарафанов', 'static/murat.png', new Date(), 11, 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.');
-let comment2 = new _blocks_comment_comment_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"]($('.comment')[1], 'Патрисия Стёклышкова', 'static/patricia.png', new Date(), 2, 'Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, каждый день новое блюдо и десерт как комплимент');
-let im1 = new _blocks_impressions_impressions_js__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"](document.getElementById('im1'), {
-  excellent: 130,
-  good: 65,
-  satisfied: 65,
-  disappoint: 40
-});
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(3)))
-
-/***/ }),
-
-/***/ 36:
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ 9:
+/***/ 10:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3992,6 +3827,171 @@ class likebtn {
   }
 
 }
+
+/***/ }),
+
+/***/ 11:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return comment; });
+/* harmony import */ var _likebtn_likebtn_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(10);
+
+class comment {
+  constructor(DOMElement, name, photo, date, likes, content) {
+    this.content = DOMElement.getElementsByClassName('comment__content')[0];
+    this.name = DOMElement.getElementsByClassName('comment__authorname')[0];
+    this.date = DOMElement.getElementsByClassName('comment__date')[0];
+    this.likebtn = new _likebtn_likebtn_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"](DOMElement.getElementsByClassName('likebtn')[0], likes || 0);
+    this.photo = DOMElement.getElementsByClassName('comment__photo')[0];
+    this.name.innerText = name; //this.date.innerText=date.toLocaleString() || '';
+
+    this.photo.src = photo;
+    this.content.innerText = content;
+  }
+
+}
+
+/***/ }),
+
+/***/ 18:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export default */
+class Booking {
+  constructor(DOMElement, options) {}
+
+}
+
+/***/ }),
+
+/***/ 2:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _fonts_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _fonts_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_fonts_css__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/***/ }),
+
+/***/ 20:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return impressions; });
+class impressions {
+  constructor(DOMElement, options) {
+    this.radius = 61;
+    this.el = DOMElement;
+    this.votes = options.excellent + options.good + options.satisfied + options.disappoint;
+    let length = 2 * 3.1415926 * (this.radius - 4);
+    this.excellent = {};
+    this.good = {};
+    this.satisfied = {};
+    this.disappoint = {};
+    this.excellent.before = 0;
+    this.excellent.arc = length * options.excellent / this.votes;
+    this.excellent.space = length - this.excellent.arc;
+    this.good.before = this.excellent.arc;
+    this.good.arc = length * options.good / this.votes;
+    this.good.space = length - this.good.arc - this.good.before;
+    this.satisfied.before = this.good.before + this.good.arc;
+    this.satisfied.arc = length * options.satisfied / this.votes;
+    this.satisfied.space = length - this.satisfied.arc - this.satisfied.before;
+    this.disappoint.before = this.satisfied.before + this.satisfied.arc;
+    this.disappoint.arc = length * options.disappoint / this.votes;
+    this.disappoint.space = 0;
+    this.render = this.render.bind(this);
+    this.render();
+  }
+
+  render() {
+    this.newel = this.el.appendChild(document.createElement('div'));
+    this.newel.classList.add('impressions');
+    this.newel.innerHTML = ` 
+			<svg width='120' height='120' viewBox='0 0 120 120'> 
+				<linearGradient id='purple-grad' x2='0' y2='100%'>
+					<stop offset="0%" stop-color="#BC9CFF"/>
+			    <stop offset="100%" stop-color="#8BA4F9"/>
+				</linearGradient>
+				<linearGradient id='green-grad' x2='0' y2='100%'>
+					<stop offset="0%" stop-color="#6FCF97"/>
+			    <stop offset="100%" stop-color="#66D2EA"/>
+				</linearGradient>
+				<linearGradient id='yellow-grad' x2='0' y2='100%'>
+					<stop offset="0%" stop-color="#FFE39C"/>
+			    <stop offset="100%" stop-color="#FFBA9C"/>
+				</linearGradient>
+				<linearGradient id='black-grad' x2='0' y2='100%'>
+					<stop offset="0%" stop-color="#919191"/>
+			    <stop offset="100%" stop-color="#3D4975"/>
+				</linearGradient>
+				<circle cx='${this.radius}' cy='${this.radius}' r='${this.radius - 4}' fill='none' stroke='url(#yellow-grad)' stroke-width='3.5px' 
+					stroke-dasharray='${this.excellent.arc - 2} ${this.excellent.space}'/> 
+				<circle cx='${this.radius}' cy='${this.radius}' r='${this.radius - 4}' fill='none' stroke='url(#green-grad)' stroke-width='3.5px' 
+					stroke-dasharray='0 ${this.good.before} ${this.good.arc - 2} ${this.good.space}'/> 
+				<circle cx='${this.radius}' cy='${this.radius}' r='${this.radius - 4}' fill='none' stroke='url(#purple-grad)' stroke-width='3.5px' \ 
+					stroke-dasharray='0 ${this.satisfied.before} ${this.satisfied.arc - 2} ${this.satisfied.space}'/> 
+				<circle cx='${this.radius}' cy='${this.radius}' r='${this.radius - 4}' fill='none' stroke='url(#black-grad)' stroke-width='3.5px' 
+					stroke-dasharray='0 ${this.disappoint.before} ${this.disappoint.arc - 4} ${this.disappoint.space}'/> 
+			</svg>
+			<div class='impressions__votes'>
+				<p>${this.votes}</p>
+				<p>голосов</p>
+			</div>
+			<div class='impressions__legend'>
+				<span class='impressions__legend-icon yellow-gradient'></span>Великолепно<br>
+				<span class='impressions__legend-icon green-gradient'></span>Хорошо<br>
+				<span class='impressions__legend-icon purple-gradient'></span>Удовлетворительно<br>
+				<span class='impressions__legend-icon black-gradient'></span>Разочарован
+			</div>`;
+  }
+
+}
+
+/***/ }),
+
+/***/ 3:
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ 36:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var _shared_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _room_details_sass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(37);
+/* harmony import */ var _room_details_sass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_room_details_sass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _blocks_comment_comment_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(11);
+/* harmony import */ var _blocks_booking_booking_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(18);
+/* harmony import */ var _blocks_impressions_impressions_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(20);
+
+
+
+
+
+let comment1 = new _blocks_comment_comment_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"]($('.comment')[0], 'Мурад Сарафанов', 'static/murat.png', new Date(), 11, 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.');
+let comment2 = new _blocks_comment_comment_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"]($('.comment')[1], 'Патрисия Стёклышкова', 'static/patricia.png', new Date(), 2, 'Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, каждый день новое блюдо и десерт как комплимент');
+let im1 = new _blocks_impressions_impressions_js__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"](document.getElementById('im1'), {
+  excellent: 130,
+  good: 65,
+  satisfied: 65,
+  disappoint: 40
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
+
+/***/ }),
+
+/***/ 37:
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ })
 

@@ -81,11 +81,12 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 25);
+/******/ 	return __webpack_require__(__webpack_require__.s = 39);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! jQuery v3.4.1 | (c) JS Foundation and other contributors | jquery.org/license */
@@ -3793,7 +3794,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! jQuery v3.4.
 });
 
 /***/ }),
-/* 1 */
+
+/***/ 1:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3924,7 +3926,66 @@ class dropdownDatepicker {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 2 */
+
+/***/ 15:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateAccount; });
+/* harmony import */ var _dropdown_dropdownDatepicker_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+
+/*
+ *	CreateAccount(DOMElement, options)
+ *	options = {
+ *		callback: function (result)
+ *		callbackLogin: function (result)
+ *	}
+ *
+ *
+		this.result={
+			firstname: '',
+			lastname: '',
+			sex: '',
+			bornDate: '',
+			login: '',
+			password: '',
+			getOffers: false
+		};
+*/
+
+class CreateAccount {
+  constructor(DOMElement, options) {
+    if (!DOMElement) return; //create and searching elements
+
+    this._options = options;
+    this._DOMElement = DOMElement;
+    this._dp = new _dropdown_dropdownDatepicker_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"]('borndate_input');
+    this._submitBtn = DOMElement.getElementsByClassName('button-submit')[0];
+    this._loginBtn = DOMElement.getElementsByClassName('button')[0]; //init
+
+    this.result = {};
+
+    this._submitBtn.addEventListener('click', () => this._submitClick());
+
+    if (this._options) if (this._options.callbackLogin) this._loginBtn.addEventListener('click', () => this._options.callbackLogin(this.result));
+  }
+
+  _submitClick(e) {
+    this.result = {};
+    let formData = new FormData(this._DOMElement.getElementsByTagName('form')[0]);
+    if (this._dp.dates[0]) formData.set('bornDate', this._dp.dates[0]);
+
+    for (let i of formData.keys()) this.result[i] = formData.get(i);
+
+    if (this._options) if (this._options.callback) this._options.callback(this.result);
+  }
+
+}
+;
+
+/***/ }),
+
+/***/ 2:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3933,103 +3994,76 @@ class dropdownDatepicker {
 
 
 /***/ }),
-/* 3 */
+
+/***/ 3:
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 4 */
+
+/***/ 38:
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ 39:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return dropdownCounters; });
-/* harmony import */ var _num_select_num_select__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7);
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
 
-/* options: {
- *   values: []
- * }
- *
- *
- *
- *
- *
- */
+// EXTERNAL MODULE: ./shared.js
+var shared = __webpack_require__(2);
 
-class dropdownCounters {
+// EXTERNAL MODULE: ./signin.sass
+var signin = __webpack_require__(38);
+
+// EXTERNAL MODULE: ./blocks/create-account/create-account.js
+var create_account = __webpack_require__(15);
+
+// CONCATENATED MODULE: ./blocks/login-form/login-form.js
+class LoginForm {
   constructor(DOMElement, options) {
-    this.fieldElement = DOMElement.getElementsByClassName('dropdown__field')[0];
-    this.counters = DOMElement.getElementsByClassName('numpad__input');
-    this.frame = DOMElement.getElementsByClassName('dropdown__frame')[0];
-    this.dropdown = DOMElement.getElementsByClassName('dropdown__dropdown')[0];
-    this.applybtn = DOMElement.getElementsByClassName('dropdown__applybtn')[0];
-    this.clearbtn = DOMElement.getElementsByClassName('dropdown__clearbtn')[0];
-    this.clearbtn.addEventListener('click', e => this.clearbtnClick(e));
-    this.applybtn.addEventListener('click', e => this.applybtnClick(e));
-    this.frame.addEventListener('click', event => this.btndownClick(event));
-    this.result = [];
+    if (!DOMElement) return; //create and searching elements
 
-    for (let i = 0; i < this.counters.length; i++) this.counters[i].onchange = e => this.counterChange(e);
+    this._options = options;
+    this._DOMElement = DOMElement;
+    this._submitBtn = DOMElement.getElementsByClassName('button-submit')[0];
+    this._createBtn = DOMElement.getElementsByClassName('button')[0]; //init
 
-    this.fieldElement.readOnly = true;
-    if (options) if (options.caption && this.overall(options.values) === 0) this.clearbtnClick();else if (overall(options.values) > 0) {
-      options.values.forEach((item, i, arr) => this.counters[i].value = item);
-      this.counterChange();
-    }
-    ;
-  }
+    this.result = {}; //this._submitBtn.addEventListener('click', ()=>this._submitClick());
 
-  overall(array) {
-    if (Array.isArray(array)) return array.reduce((sum, cur) => sum + cur, 0);else return 0;
-  }
-
-  clearbtnClick(e) {
-    for (let i = 0; i < this.counters.length; i++) this.counters[i].value = 0;
-
-    this.fieldElement.value = '';
-    this.clearbtn.classList.remove('dropdown__clearbtn_visible');
-  }
-
-  btndownClick(e) {
-    e.stopPropagation();
-    this.dropdown.classList.toggle('dropdown__dropdown_visible');
-    this.frame.classList.toggle('dropdown__frame_hover');
-    this.frame.classList.toggle('dropdown__frame_dropdown');
-    this.frame.classList.remove('dropdown__frame_red');
-  }
-
-  applybtnClick(e) {
-    for (let i = 0; i < this.counters.length; i++) this.result[i] = this.counters[i].value;
-
-    this.btndownClick(e);
-  }
-
-  counterChange(e) {
-    let text = '';
-    let overall = 0;
-
-    if (this.dropdown.attributes.plural.value && this.dropdown.attributes.singular.value) {
-      for (let i = 0; i < this.counters.length; i++) overall += +this.counters[i].value; //
-
-
-      if (overall == 1) text = '1 ' + this.dropdown.attributes.singular.value;else if (overall > 1) text = overall + ' ' + this.dropdown.attributes.plural.value;
-    } else for (let i = 0; i < this.counters.length; i++) {
-      let counter = this.counters[i];
-      if (counter.value != 0 && text !== '') text += ', ';
-      if (counter.value == 1) text += '1 ' + counter.parentElement.parentElement.attributes.singular.value;else if (counter.value > 1) text += counter.value + ' ' + counter.parentElement.parentElement.attributes.plural.value;
-    }
-
-    if (text.length > 22) this.fieldElement.value = text.slice(0, 20) + '...';else this.fieldElement.value = text;
-    this.fieldElement.title = text;
-    if (text != '') this.clearbtn.classList.add('dropdown__clearbtn_visible');else this.clearbtn.classList.remove('dropdown__clearbtn_visible');
-
-    for (let i = 0; i < this.counters.length; i++) this.result[i] = this.counters[i].value;
+    if (this._options) if (this._options.callbackCreate) this._createBtn.addEventListener('click', () => this._options.callbackCreate(this.result));
   }
 
 }
+// CONCATENATED MODULE: ./signin.js
+
+
+
+
+
+let form_toggle = () => {
+  document.getElementsByClassName('create-account')[0].classList.toggle('signin_hide');
+  document.getElementsByClassName('login-form')[0].classList.toggle('signin_hide');
+};
+
+let caform = new create_account["a" /* default */](document.getElementsByClassName('create-account')[0], {
+  callback: console.log,
+  callbackLogin: form_toggle
+});
+let loform = new LoginForm(document.getElementsByClassName('login-form')[0], {
+  callback: console.log,
+  callbackCreate: form_toggle
+});
 
 /***/ }),
-/* 5 */
+
+/***/ 5:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {;
@@ -6208,397 +6242,19 @@ class dropdownCounters {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
-/* 6 */
+
+/***/ 6:
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 7 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-"use strict";
-/* harmony import */ var _numpad_numpad_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9);
-/* harmony import */ var _numpad_numpad_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_numpad_numpad_js__WEBPACK_IMPORTED_MODULE_0__);
-
-
-/***/ }),
-/* 8 */
+/***/ 8:
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports) {
-
-numpadAddClick = e => {
-  let numpad = e.currentTarget.parentElement.getElementsByTagName('input')[0];
-  if (!numpad.max || +numpad.value < +numpad.max) numpad.value++;
-  numpadCheckRestrictions(e, numpad);
-  numpad.onchange();
-};
-
-numpadCheckRestrictions = (e, numpad) => {
-  let incbtn = e.currentTarget.parentElement.getElementsByClassName('numpad__btn_inc')[0];
-  let decbtn = e.currentTarget.parentElement.getElementsByClassName('numpad__btn_dec')[0];
-  if (numpad.min) if (+numpad.value === +numpad.min) {
-    decbtn.classList.add('numpad__btn_disabled');
-    decbtn.classList.remove('numpad__btn_enabled');
-  } else {
-    decbtn.classList.remove('numpad__btn_disabled');
-    decbtn.classList.add('numpad__btn_enabled');
-  }
-  ;
-  if (numpad.max) if (+numpad.value === +numpad.max) {
-    incbtn.classList.add('numpad__btn_disabled');
-    incbtn.classList.remove('numpad__btn_enabled');
-  } else {
-    incbtn.classList.remove('numpad__btn_disabled');
-    incbtn.classList.add('numpad__btn_enabled');
-  }
-  ;
-};
-
-numpadDecClick = e => {
-  let numpad = e.currentTarget.parentElement.getElementsByTagName('input')[0];
-  if (!numpad.min || +numpad.value > +numpad.min) numpad.value--;
-  numpadCheckRestrictions(e, numpad);
-  numpad.onchange();
-};
-
-/***/ }),
-/* 10 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return likebtn; });
-class likebtn {
-  constructor(DOMElement, likes, liked) {
-    this.liked = liked || false;
-    this.likes = likes || 0;
-    this.likeElement = DOMElement;
-    this.likesElement = DOMElement.getElementsByClassName('likebtn__likes')[0];
-    this.likeHeart = DOMElement.getElementsByClassName('likebtn__heart')[0];
-    this.likeElement.addEventListener('click', e => this.likebtnClick(e));
-    this.likebtnClick = this.likebtnClick.bind(this);
-    this.likesElement.innerText = this.likes;
-  }
-
-  likebtnClick(e) {
-    if (!this.liked) {
-      this.likeElement.classList.add('likebtn_liked');
-      this.likeHeart.innerText = 'favorite';
-      this.likesElement.innerText = ++this.likes;
-      this.liked = true;
-    } else {
-      this.likeElement.classList.remove('likebtn_liked');
-      this.likeHeart.innerText = 'favorite_border';
-      this.likesElement.innerText = --this.likes;
-      this.liked = false;
-    }
-  }
-
-}
-
-/***/ }),
-/* 11 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return comment; });
-/* harmony import */ var _likebtn_likebtn_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(10);
-
-class comment {
-  constructor(DOMElement, name, photo, date, likes, content) {
-    this.content = DOMElement.getElementsByClassName('comment__content')[0];
-    this.name = DOMElement.getElementsByClassName('comment__authorname')[0];
-    this.date = DOMElement.getElementsByClassName('comment__date')[0];
-    this.likebtn = new _likebtn_likebtn_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"](DOMElement.getElementsByClassName('likebtn')[0], likes || 0);
-    this.photo = DOMElement.getElementsByClassName('comment__photo')[0];
-    this.name.innerText = name; //this.date.innerText=date.toLocaleString() || '';
-
-    this.photo.src = photo;
-    this.content.innerText = content;
-  }
-
-}
-
-/***/ }),
-/* 12 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return pagination; });
-class pagination {
-  constructor(domElement, items, items_per_page) {
-    this.left = domElement.getElementsByClassName('pagination__arrow')[0];
-    this.right = domElement.getElementsByClassName('pagination__arrow')[1];
-    this.page = domElement.getElementsByClassName('pagination__pages');
-    this.footer = domElement.getElementsByClassName('pagination__footer')[0];
-    this.footerEnding = this.footer.innerText;
-    this.pages = Math.ceil(items / items_per_page);
-    this.selected = 1;
-    this.items = items;
-    this.itemsPerPage = items_per_page;
-    this.left.addEventListener('click', e => this.leftClick(e));
-    this.right.addEventListener('click', e => this.rightClick(e));
-    if (items > 100) this.maxitemText = '100+';else this.maxitemText = items;
-
-    for (let i of this.page) i.addEventListener('click', e => this.pageClick(e));
-
-    this.setPage(1);
-  }
-
-  setSelected(pageElementNum) {
-    for (let i of this.page) i.classList.remove('pagination__pages_selected');
-
-    this.page[pageElementNum].classList.add('pagination__pages_selected');
-  }
-
-  setControls() {
-    if (this.selected === 1) this.left.classList.add('pagination__arrow_hidden');else if (this.selected === this.pages) this.right.classList.add('pagination__arrow_hidden');else {
-      this.left.classList.remove('pagination__arrow_hidden');
-      this.right.classList.remove('pagination__arrow_hidden');
-    }
-  }
-
-  setPage(page) {
-    this.selected = page;
-    this.footer.innerText = (page - 1) * this.itemsPerPage + 1 + ' - ' + (page === this.pages ? this.items : page * this.itemsPerPage) + ' из ' + this.maxitemText + ' ' + this.footerEnding;
-
-    if (this.pages <= 5) {
-      for (let i = 1; i <= this.pages; i++) this.page[i - 1].innerHTML = i;
-
-      for (let i = this.pages + 1; i <= 5; i++) this.page[i - 1].classList.add('pagination__pages_hidden');
-
-      this.setSelected(this.selected - 1);
-
-      if (this.pages <= 5) {
-        this.left.classList.add('pagination__arrow_hidden');
-        this.right.classList.add('pagination__arrow_hidden');
-      }
-
-      ;
-    } else {
-      this.setControls();
-      this.page[0].innerHTML = 1;
-      this.page[4].innerHTML = this.pages;
-
-      switch (this.selected) {
-        case 1:
-        case 2:
-        case 3:
-          this.page[1].innerHTML = 2;
-          this.page[2].innerHTML = 3;
-          this.page[3].innerHTML = '...';
-          this.setSelected(this.selected - 1);
-          break;
-
-        case this.pages - 2:
-        case this.pages - 1:
-        case this.pages:
-          this.page[1].innerHTML = '...';
-          this.page[2].innerHTML = this.pages - 2;
-          this.page[3].innerHTML = this.pages - 1;
-          this.setSelected(4 - (this.pages - this.selected));
-          break;
-
-        default:
-          this.page[1].innerHTML = '...';
-          this.page[2].innerHTML = page;
-          this.page[3].innerHTML = '...';
-          this.setSelected(2);
-      }
-    }
-  }
-
-  leftClick(e) {
-    this.setPage(this.selected - 1);
-  }
-
-  rightClick(e) {
-    this.setPage(this.selected + 1);
-  }
-
-  pageClick(e) {
-    if (e.currentTarget.innerHTML !== '...') this.setPage(+e.currentTarget.innerHTML);
-  }
-
-}
-
-/***/ }),
-/* 13 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return rangeslider; });
-class rangeslider {
-  constructor(DOMElement, min, max, step) {
-    this.min = min;
-    this.max = max;
-    this.step = step;
-    this.slider1 = DOMElement.getElementsByClassName('range-slider__input')[0];
-    this.slider2 = DOMElement.getElementsByClassName('range-slider__input')[1];
-    this.middle = DOMElement.getElementsByClassName('range-slider__input-middle')[0];
-    this.rangeValue = DOMElement.getElementsByClassName('range-slider__rangevalue')[0];
-    this.slider1.addEventListener('input', e => this.sliderChange(e));
-    this.slider2.addEventListener('input', e => this.sliderChange(e));
-    this.middle.addEventListener('input', e => this.middleChange(e));
-    this.slider1.max = this.slider2.max = this.middle.max = max;
-    this.slider1.min = this.slider2.min = this.middle.min = min;
-    this.slider1.step = this.slider2.step = this.middle.step = step;
-    if (!this.slider1.value || !this.slider2.value) this.slider1.value = min;
-    this.slider2.value = max;
-    this.sliderChange();
-  }
-
-  middleChange(e) {
-    let maxRange = this.max - this.min;
-    let range = this.valueMax - this.valueMin;
-    let free = maxRange - range;
-    let position = this.middle.value / maxRange;
-    this.valueMin = Math.round(position * free / this.step) * this.step;
-    this.valueMax = this.valueMin + range;
-    this.slider1.value = this.valueMin;
-    this.slider2.value = this.valueMax;
-    this.rangeValue.innerText = `${this.valueMin}\u20bd - ${this.valueMax}\u20bd`;
-  }
-
-  sliderChange(e) {
-    this.valueMin = Math.min(this.slider1.value, this.slider2.value);
-    this.valueMax = Math.max(this.slider1.value, this.slider2.value);
-    let maxRange = this.max - this.min;
-    let range = this.valueMax - this.valueMin;
-    let free = maxRange - range;
-    let position = this.valueMin / free;
-    this.middle.value = maxRange * position;
-    this.middle.style.setProperty('--size', 99 * range / maxRange + '%');
-    this.rangeValue.innerText = `${this.valueMin}\u20bd - ${this.valueMax}\u20bd`;
-  }
-
-}
-
-/***/ }),
-/* 14 */,
-/* 15 */,
-/* 16 */
-/***/ (function(module, exports) {
-
-checkboxlistOnClick = e => {
-  let btn = e.currentTarget.getElementsByClassName('checkbox-list__btn')[0];
-  let dropdown = e.currentTarget.getElementsByClassName('checkbox-list__dropdown')[0];
-  btn.classList.toggle('checkbox-list__btn_opened');
-  dropdown.classList.toggle('checkbox-list__dropdown_opened');
-};
-
-/***/ }),
-/* 17 */,
-/* 18 */,
-/* 19 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ratebtn; });
-class ratebtn {
-  constructor(DOMElement, rate, enabled) {
-    this.ratebtn = DOMElement;
-    this.ratebtnStars = DOMElement.getElementsByClassName('ratebtn__star');
-    this.rate = rate || 0;
-    this.updateRate();
-    if (enabled) for (let i = 0; i < this.ratebtnStars.length; i++) {
-      this.ratebtnStars[i].addEventListener('click', e => this.starClick(e));
-      this.ratebtnStars[i].classList.add('ratebtn__star_pointer');
-    }
-  }
-
-  updateRate() {
-    if (this.rate <= 5) for (let i = 0; i < this.rate; i++) this.ratebtnStars[i].innerText = 'star';
-
-    for (let i = this.rate; i < 5; i++) this.ratebtnStars[i].innerText = 'star_border';
-  }
-
-  starClick(e) {
-    let newRate = +e.currentTarget.attributes.value.value;
-    if (this.rate === 1 && newRate === 1) this.rate = 0;else this.rate = newRate;
-    this.updateRate();
-  }
-
-}
-
-/***/ }),
-/* 20 */,
-/* 21 */,
-/* 22 */,
-/* 23 */,
-/* 24 */,
-/* 25 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var _shared_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
-/* harmony import */ var _plugins_air_datepicker_css_datepicker_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
-/* harmony import */ var _plugins_air_datepicker_css_datepicker_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_plugins_air_datepicker_css_datepicker_css__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _form_elements_sass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(26);
-/* harmony import */ var _form_elements_sass__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_form_elements_sass__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _blocks_numpad_numpad_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(9);
-/* harmony import */ var _blocks_numpad_numpad_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_blocks_numpad_numpad_js__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _blocks_dropdown_dropdown_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(27);
-/* harmony import */ var _blocks_dropdown_dropdown_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_blocks_dropdown_dropdown_js__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _blocks_checkbox_list_checkbox_list_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(16);
-/* harmony import */ var _blocks_checkbox_list_checkbox_list_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_blocks_checkbox_list_checkbox_list_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(5);
-/* harmony import */ var _plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _blocks_ratebtn_ratebtn_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(19);
-/* harmony import */ var _blocks_likebtn_likebtn_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(10);
-/* harmony import */ var _blocks_pagination_pagination_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(12);
-/* harmony import */ var _blocks_range_slider_range_slider_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(13);
-/* harmony import */ var _blocks_dropdown_dropdownCounters_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(4);
-/* harmony import */ var _blocks_dropdown_dropdownDatepicker_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(1);
-/* harmony import */ var _blocks_comment_comment_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(11);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-let ratebtn1 = new _blocks_ratebtn_ratebtn_js__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"](document.getElementsByClassName('ratebtn')[0], 4, 1);
-let ratebtn2 = new _blocks_ratebtn_ratebtn_js__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"](document.getElementsByClassName('ratebtn')[1], 5);
-let like1 = new _blocks_likebtn_likebtn_js__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"](document.getElementsByClassName('likebtn')[0]);
-let like2 = new _blocks_likebtn_likebtn_js__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"](document.getElementsByClassName('likebtn')[1], 10);
-let pag1 = new _blocks_pagination_pagination_js__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"](document.getElementsByClassName('pagination')[0], 104, 10);
-let slider1 = new _blocks_range_slider_range_slider_js__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"](document.getElementsByClassName('range-slider')[0], 0, 15500, 500);
-let dropdown1 = new _blocks_dropdown_dropdownCounters_js__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"](document.getElementsByClassName('dropdown')[0]);
-let dropdown2 = new _blocks_dropdown_dropdownCounters_js__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"](document.getElementsByClassName('dropdown')[4]);
-let dropdown3 = new _blocks_dropdown_dropdownCounters_js__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"](document.getElementsByClassName('dropdown')[5]);
-let dropdown4 = new _blocks_dropdown_dropdownCounters_js__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"](document.getElementsByClassName('dropdown')[6]);
-let dropdown5 = new _blocks_dropdown_dropdownCounters_js__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"](document.getElementsByClassName('dropdown')[7]);
-let dddpicker1 = new _blocks_dropdown_dropdownDatepicker_js__WEBPACK_IMPORTED_MODULE_12__[/* default */ "a"]('dp1', false);
-let dddpicker2 = new _blocks_dropdown_dropdownDatepicker_js__WEBPACK_IMPORTED_MODULE_12__[/* default */ "a"]('dp2', false);
-let dddpicker3 = new _blocks_dropdown_dropdownDatepicker_js__WEBPACK_IMPORTED_MODULE_12__[/* default */ "a"]('dp3', true);
-let comment1 = new _blocks_comment_comment_js__WEBPACK_IMPORTED_MODULE_13__[/* default */ "a"]($('.comment')[0], 'Мурад Сарафанов', 'static/murat.png', new Date(), 12, 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.');
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
-
-/***/ }),
-/* 26 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 27 */
-/***/ (function(module, exports) {
-
-
 
 /***/ })
-/******/ ]);
+
+/******/ });

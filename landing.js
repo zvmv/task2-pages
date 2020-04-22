@@ -81,116 +81,11 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 31);
+/******/ 	return __webpack_require__(__webpack_require__.s = 32);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return dropdownCounters; });
-/* harmony import */ var _num_select_num_select__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7);
-
-/* options: {
- *   values: []
- * }
- *
- *
- *
- *
- *
- */
-
-class dropdownCounters {
-  constructor(DOMElement, options) {
-    this.fieldElement = DOMElement.getElementsByClassName('dropdown__field')[0];
-    this.counters = DOMElement.getElementsByClassName('numpad__input');
-    this.frame = DOMElement.getElementsByClassName('dropdown__frame')[0];
-    this.dropdown = DOMElement.getElementsByClassName('dropdown__dropdown')[0];
-    this.applybtn = DOMElement.getElementsByClassName('dropdown__applybtn')[0];
-    this.clearbtn = DOMElement.getElementsByClassName('dropdown__clearbtn')[0];
-    this.clearbtn.addEventListener('click', e => this.clearbtnClick(e));
-    this.applybtn.addEventListener('click', e => this.applybtnClick(e));
-    this.frame.addEventListener('click', event => this.btndownClick(event));
-    this.result = [];
-
-    for (let i = 0; i < this.counters.length; i++) this.counters[i].onchange = e => this.counterChange(e);
-
-    this.fieldElement.readOnly = true;
-    if (options) if (options.caption && this.overall(options.values) === 0) this.clearbtnClick();else if (overall(options.values) > 0) {
-      options.values.forEach((item, i, arr) => this.counters[i].value = item);
-      this.counterChange();
-    }
-    ;
-  }
-
-  overall(array) {
-    if (Array.isArray(array)) return array.reduce((sum, cur) => sum + cur, 0);else return 0;
-  }
-
-  clearbtnClick(e) {
-    for (let i = 0; i < this.counters.length; i++) this.counters[i].value = 0;
-
-    this.fieldElement.value = '';
-    this.clearbtn.classList.remove('dropdown__clearbtn_visible');
-  }
-
-  btndownClick(e) {
-    e.stopPropagation();
-    this.dropdown.classList.toggle('dropdown__dropdown_visible');
-    this.frame.classList.toggle('dropdown__frame_hover');
-    this.frame.classList.toggle('dropdown__frame_dropdown');
-    this.frame.classList.remove('dropdown__frame_red');
-  }
-
-  applybtnClick(e) {
-    for (let i = 0; i < this.counters.length; i++) this.result[i] = this.counters[i].value;
-
-    this.btndownClick(e);
-  }
-
-  counterChange(e) {
-    let text = '';
-    let overall = 0;
-
-    if (this.dropdown.attributes.plural.value && this.dropdown.attributes.singular.value) {
-      for (let i = 0; i < this.counters.length; i++) overall += +this.counters[i].value; //
-
-
-      if (overall == 1) text = '1 ' + this.dropdown.attributes.singular.value;else if (overall > 1) text = overall + ' ' + this.dropdown.attributes.plural.value;
-    } else for (let i = 0; i < this.counters.length; i++) {
-      let counter = this.counters[i];
-      if (counter.value != 0 && text !== '') text += ', ';
-      if (counter.value == 1) text += '1 ' + counter.parentElement.parentElement.attributes.singular.value;else if (counter.value > 1) text += counter.value + ' ' + counter.parentElement.parentElement.attributes.plural.value;
-    }
-
-    if (text.length > 22) this.fieldElement.value = text.slice(0, 20) + '...';else this.fieldElement.value = text;
-    this.fieldElement.title = text;
-    if (text != '') this.clearbtn.classList.add('dropdown__clearbtn_visible');else this.clearbtn.classList.remove('dropdown__clearbtn_visible');
-
-    for (let i = 0; i < this.counters.length; i++) this.result[i] = this.counters[i].value;
-  }
-
-}
-
-/***/ }),
-/* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _fonts_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
-/* harmony import */ var _fonts_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_fonts_css__WEBPACK_IMPORTED_MODULE_0__);
-
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! jQuery v3.4.1 | (c) JS Foundation and other contributors | jquery.org/license */
@@ -3898,7 +3793,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! jQuery v3.4.
 });
 
 /***/ }),
-/* 4 */
+/* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3907,6 +3802,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! jQuery v3.4.
 /* harmony import */ var _plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _plugins_air_datepicker_css_datepicker_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
 /* harmony import */ var _plugins_air_datepicker_css_datepicker_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_plugins_air_datepicker_css_datepicker_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _datepicker_datepicker_sass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(8);
+/* harmony import */ var _datepicker_datepicker_sass__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_datepicker_datepicker_sass__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 /*dates - selected dates
@@ -4023,7 +3921,112 @@ class dropdownDatepicker {
   }
 
 }
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(3)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _fonts_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _fonts_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_fonts_css__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return dropdownCounters; });
+/* harmony import */ var _num_select_num_select__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7);
+
+/* options: {
+ *   values: []
+ * }
+ *
+ *
+ *
+ *
+ *
+ */
+
+class dropdownCounters {
+  constructor(DOMElement, options) {
+    this.fieldElement = DOMElement.getElementsByClassName('dropdown__field')[0];
+    this.counters = DOMElement.getElementsByClassName('numpad__input');
+    this.frame = DOMElement.getElementsByClassName('dropdown__frame')[0];
+    this.dropdown = DOMElement.getElementsByClassName('dropdown__dropdown')[0];
+    this.applybtn = DOMElement.getElementsByClassName('dropdown__applybtn')[0];
+    this.clearbtn = DOMElement.getElementsByClassName('dropdown__clearbtn')[0];
+    this.clearbtn.addEventListener('click', e => this.clearbtnClick(e));
+    this.applybtn.addEventListener('click', e => this.applybtnClick(e));
+    this.frame.addEventListener('click', event => this.btndownClick(event));
+    this.result = [];
+
+    for (let i = 0; i < this.counters.length; i++) this.counters[i].onchange = e => this.counterChange(e);
+
+    this.fieldElement.readOnly = true;
+    if (options) if (options.caption && this.overall(options.values) === 0) this.clearbtnClick();else if (overall(options.values) > 0) {
+      options.values.forEach((item, i, arr) => this.counters[i].value = item);
+      this.counterChange();
+    }
+    ;
+  }
+
+  overall(array) {
+    if (Array.isArray(array)) return array.reduce((sum, cur) => sum + cur, 0);else return 0;
+  }
+
+  clearbtnClick(e) {
+    for (let i = 0; i < this.counters.length; i++) this.counters[i].value = 0;
+
+    this.fieldElement.value = '';
+    this.clearbtn.classList.remove('dropdown__clearbtn_visible');
+  }
+
+  btndownClick(e) {
+    e.stopPropagation();
+    this.dropdown.classList.toggle('dropdown__dropdown_visible');
+    this.frame.classList.toggle('dropdown__frame_hover');
+    this.frame.classList.toggle('dropdown__frame_dropdown');
+    this.frame.classList.remove('dropdown__frame_red');
+  }
+
+  applybtnClick(e) {
+    for (let i = 0; i < this.counters.length; i++) this.result[i] = this.counters[i].value;
+
+    this.btndownClick(e);
+  }
+
+  counterChange(e) {
+    let text = '';
+    let overall = 0;
+
+    if (this.dropdown.attributes.plural.value && this.dropdown.attributes.singular.value) {
+      for (let i = 0; i < this.counters.length; i++) overall += +this.counters[i].value; //
+
+
+      if (overall == 1) text = '1 ' + this.dropdown.attributes.singular.value;else if (overall > 1) text = overall + ' ' + this.dropdown.attributes.plural.value;
+    } else for (let i = 0; i < this.counters.length; i++) {
+      let counter = this.counters[i];
+      if (counter.value != 0 && text !== '') text += ', ';
+      if (counter.value == 1) text += '1 ' + counter.parentElement.parentElement.attributes.singular.value;else if (counter.value > 1) text += counter.value + ' ' + counter.parentElement.parentElement.attributes.plural.value;
+    }
+
+    if (text.length > 22) this.fieldElement.value = text.slice(0, 20) + '...';else this.fieldElement.value = text;
+    this.fieldElement.title = text;
+    if (text != '') this.clearbtn.classList.add('dropdown__clearbtn_visible');else this.clearbtn.classList.remove('dropdown__clearbtn_visible');
+
+    for (let i = 0; i < this.counters.length; i++) this.result[i] = this.counters[i].value;
+  }
+
+}
 
 /***/ }),
 /* 5 */
@@ -6202,7 +6205,7 @@ class dropdownDatepicker {
     };
   })();
 })(window, jQuery);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(3)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
 /* 6 */
@@ -6215,12 +6218,18 @@ class dropdownDatepicker {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _numpad_numpad_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8);
+/* harmony import */ var _numpad_numpad_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9);
 /* harmony import */ var _numpad_numpad_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_numpad_numpad_js__WEBPACK_IMPORTED_MODULE_0__);
 
 
 /***/ }),
 /* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports) {
 
 numpadAddClick = e => {
@@ -6259,21 +6268,21 @@ numpadDecClick = e => {
 };
 
 /***/ }),
-/* 9 */,
 /* 10 */,
 /* 11 */,
 /* 12 */,
-/* 13 */
+/* 13 */,
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RoomSearch; });
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(15);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(17);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5);
 /* harmony import */ var _plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_plugins_air_datepicker_js_datepicker_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _dropdown_dropdownDatepicker_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4);
-/* harmony import */ var _dropdown_dropdownCounters_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(0);
+/* harmony import */ var _dropdown_dropdownDatepicker_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1);
+/* harmony import */ var _dropdown_dropdownCounters_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4);
 /* harmony import */ var _num_select_num_select_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(7);
 
 
@@ -6361,8 +6370,9 @@ class RoomSearch {
 }
 
 /***/ }),
-/* 14 */,
-/* 15 */
+/* 15 */,
+/* 16 */,
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -15680,8 +15690,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 });
 
 /***/ }),
-/* 16 */,
-/* 17 */,
 /* 18 */,
 /* 19 */,
 /* 20 */,
@@ -15695,17 +15703,18 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 /* 28 */,
 /* 29 */,
 /* 30 */,
-/* 31 */
+/* 31 */,
+/* 32 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _shared_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _shared_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _plugins_air_datepicker_css_datepicker_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
 /* harmony import */ var _plugins_air_datepicker_css_datepicker_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_plugins_air_datepicker_css_datepicker_css__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _landing_sass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(32);
+/* harmony import */ var _landing_sass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(33);
 /* harmony import */ var _landing_sass__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_landing_sass__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _blocks_room_search_room_search_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(13);
+/* harmony import */ var _blocks_room_search_room_search_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(14);
 
 
 
@@ -15716,7 +15725,7 @@ let rs1 = new _blocks_room_search_room_search_js__WEBPACK_IMPORTED_MODULE_3__[/*
 });
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
